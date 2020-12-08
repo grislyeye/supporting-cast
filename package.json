@@ -58,8 +58,8 @@
   },
   "name": "supporting-cast",
   "version": "0.0.0",
-  "description": "Webcomponent supporting-cast following open-wc recommendations",
-  "author": "supporting-cast",
+  "description": "NPC block generator webapp",
+  "author": "R.G. Wood <ric@grislyeye.com>",
   "license": "MIT",
   "dependencies": {
     "lit-element": "^2.4.0",
