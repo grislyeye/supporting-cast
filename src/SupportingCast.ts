@@ -1,10 +1,10 @@
 import { LitElement, html, css, property } from 'lit-element';
-import { openWcLogo } from './open-wc-logo.js';
 
 export class SupportingCast extends LitElement {
+
   @property({ type: String }) page = 'main';
 
-  @property({ type: String }) title = '';
+  @property({ type: String }) title = 'Supporting Cast';
 
   static styles = css`
     :host {
@@ -24,20 +24,6 @@ export class SupportingCast extends LitElement {
       flex-grow: 1;
     }
 
-    .logo > svg {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
-    }
-
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
     .app-footer {
       font-size: calc(12px + 0.5vmin);
       align-items: center;
@@ -51,22 +37,11 @@ export class SupportingCast extends LitElement {
   render() {
     return html`
       <main>
-        <div class="logo">${openWcLogo}</div>
-        <h1>My app</h1>
-
-        <p>Edit <code>src/SupportingCast.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/developing/#code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        <h1>${this.title}</h1>
       </main>
 
       <p class="app-footer">
-        🚽 Made with love by
+        Made with love by
         <a
           target="_blank"
           rel="noopener noreferrer"
