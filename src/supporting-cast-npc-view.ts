@@ -15,5 +15,6 @@ export class SupportingCastNpcView extends LitElement {
     const detail = (event as CustomEvent).detail;
     this.npcBlock!.setAttribute('name', detail.name);
     this.npcBlock!.setAttribute('description', detail.description);
+    this.npcBlock!.setAttribute('gender', detail.gender);
   }
 }

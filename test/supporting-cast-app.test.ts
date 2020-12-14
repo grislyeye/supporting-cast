@@ -24,5 +24,13 @@ describe('<supporting-cast-app>', async () => {
         'NPC description'
       );
     });
+    it('update NPC block gender from form.', async () => {
+      app.form!.genderField!.value = 'NPC gender';
+      app.form!.genderField!.dispatchEvent(new CustomEvent('input'));
+
+      expect(app.npcView!.npcBlock!.getAttribute('gender')).to.equal(
+        'NPC gender'
+      );
+    });
   });
 });
