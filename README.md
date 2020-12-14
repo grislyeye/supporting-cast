@@ -1,6 +1,6 @@
 # Supporting Cast [![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://github.com/open-wc)
 
-NPC block generator. Create NPC blocks for export as HTML or PNG using the (<vellum-monster>)[https://github.com/grislyeye/vellum-monster] custom element.
+NPC block generator. Create NPC blocks for export as HTML or PNG using the (<vellum-npc>)[https://github.com/grislyeye/vellum-monster#npc-stat-blocks] custom element.
 
 ## Quickstart
 
