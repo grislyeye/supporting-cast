@@ -17,7 +17,7 @@ export class SupportingCastNpcForm extends LitElement {
 
         <wl-textfield
           id="name-field"
-          @input="${this._handleInput}"
+          @input="${this._onInput}"
           name="name"
           label="Name"
           outlined
@@ -26,7 +26,7 @@ export class SupportingCastNpcForm extends LitElement {
 
         <wl-textfield
           id="description-field"
-          @input="${this._handleInput}"
+          @input="${this._onInput}"
           name="description"
           label="Description"
           outlined
@@ -36,7 +36,7 @@ export class SupportingCastNpcForm extends LitElement {
     `;
   }
 
-  _handleInput(): void {
+  _onInput(): void {
     const npcUpdate = new CustomEvent('npc-update', {
       detail: {
         name: this.nameField!.value,
