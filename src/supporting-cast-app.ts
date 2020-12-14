@@ -1,15 +1,20 @@
-import { LitElement, html, css, customElement, property, query } from 'lit-element';
+import {
+  LitElement,
+  html,
+  css,
+  customElement,
+  property,
+  query,
+} from 'lit-element';
 import 'weightless/divider';
 import 'weightless/nav';
 
 import { SupportingCastNpcForm } from './supporting-cast-npc-form.js';
-import './supporting-cast-npc-form.js';
+
 import { SupportingCastNpcView } from './supporting-cast-npc-view.js';
-import './supporting-cast-npc-view.js';
 
 @customElement('supporting-cast-app')
 export class SupportingCastApp extends LitElement {
-
   @property({ type: String }) title = 'Supporting Cast';
 
   @query('#form') form!: SupportingCastNpcForm | null;
@@ -44,9 +49,9 @@ export class SupportingCastApp extends LitElement {
     }
   `;
 
-  firstUpdated() {
-    const handler = this.npcView!.handleEvents.bind(this.npcView)
-    this.form!.addEventListener("npc-update", handler)
+  firstUpdated(): void {
+    const handler = this.npcView!.handleEvents.bind(this.npcView);
+    this.form!.addEventListener('npc-update', handler);
   }
 
   render() {

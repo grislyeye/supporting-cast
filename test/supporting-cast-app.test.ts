@@ -1,13 +1,8 @@
-import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
-import { Textfield } from 'weightless/textfield';
+import { html, fixture, expect } from '@open-wc/testing';
 
 import { SupportingCastApp } from '../src/supporting-cast-app.js';
-import '../src/supporting-cast-app.js';
 
-import { SupportingCastNpcForm } from '../src/supporting-cast-npc-form.js';
-import { SupportingCastNpcView } from '../src/supporting-cast-npc-view.js';
-
-import 'vellum-monster/vellum-npc'
+import 'vellum-monster/vellum-npc';
 
 describe('<supporting-cast-app>', () => {
   describe('should', () => {
@@ -16,10 +11,10 @@ describe('<supporting-cast-app>', () => {
         <supporting-cast-app></supporting-cast-app>
       `);
 
-      app.form!.nameField!.value = "NPC Name"
-      app.form!.nameField!.dispatchEvent(new CustomEvent("input"))
+      app.form!.nameField!.value = 'NPC Name';
+      app.form!.nameField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute("name")).to.equal("NPC Name")
+      expect(app.npcView!.npcBlock!.getAttribute('name')).to.equal('NPC Name');
     });
   });
 });

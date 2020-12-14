@@ -1,10 +1,8 @@
-import { LitElement, html, css, customElement, property, query } from 'lit-element';
+import { LitElement, html, css, customElement, query } from 'lit-element';
 import { Textfield } from 'weightless/textfield';
-import 'weightless/textfield';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
-
   static styles = css``;
 
   @query('#name-field') nameField!: Textfield | null;
@@ -19,20 +17,20 @@ export class SupportingCastNpcForm extends LitElement {
           @input="${this._handleInput}"
           name="name"
           label="Name"
-          outlined>
+          outlined
+        >
         </wl-textfield>
       </form>
     `;
   }
 
-  _handleInput() {
-    const npcUpdate = new CustomEvent("npc-update", {
+  _handleInput(): void {
+    const npcUpdate = new CustomEvent('npc-update', {
       detail: {
-        name: this.nameField!.value
-      }
+        name: this.nameField!.value,
+      },
     });
 
     this.dispatchEvent(npcUpdate);
   }
-
 }
