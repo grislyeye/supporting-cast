@@ -10,8 +10,10 @@ import 'weightless/divider';
 import 'weightless/nav';
 
 import { SupportingCastNpcForm } from './supporting-cast-npc-form.js';
+import './supporting-cast-npc-form.js';
 
 import { SupportingCastNpcView } from './supporting-cast-npc-view.js';
+import './supporting-cast-npc-view.js';
 
 @customElement('supporting-cast-app')
 export class SupportingCastApp extends LitElement {

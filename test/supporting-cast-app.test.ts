@@ -1,8 +1,7 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
 import { SupportingCastApp } from '../src/supporting-cast-app.js';
-
-import 'vellum-monster/vellum-npc';
+import '../src/supporting-cast-app.js';
 
 describe('<supporting-cast-app>', () => {
   describe('should', () => {

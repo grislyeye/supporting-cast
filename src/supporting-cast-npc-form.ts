@@ -1,5 +1,6 @@
 import { LitElement, html, css, customElement, query } from 'lit-element';
 import { Textfield } from 'weightless/textfield';
+import 'weightless/textfield';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
