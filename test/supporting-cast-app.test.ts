@@ -15,5 +15,18 @@ describe('<supporting-cast-app>', () => {
 
       expect(app.npcView!.npcBlock!.getAttribute('name')).to.equal('NPC Name');
     });
+
+    it('update NPC block description from form.', async () => {
+      const app: SupportingCastApp = await fixture(html`
+        <supporting-cast-app></supporting-cast-app>
+      `);
+
+      app.form!.descriptionField!.value = 'NPC description';
+      app.form!.descriptionField!.dispatchEvent(new CustomEvent('input'));
+
+      expect(app.npcView!.npcBlock!.getAttribute('description')).to.equal(
+        'NPC description'
+      );
+    });
   });
 });

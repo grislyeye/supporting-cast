@@ -8,6 +8,8 @@ export class SupportingCastNpcForm extends LitElement {
 
   @query('#name-field') nameField!: Textfield | null;
 
+  @query('#description-field') descriptionField!: Textfield | null;
+
   render() {
     return html`
       <form id="npc-block-form">
@@ -21,6 +23,15 @@ export class SupportingCastNpcForm extends LitElement {
           outlined
         >
         </wl-textfield>
+
+        <wl-textfield
+          id="description-field"
+          @input="${this._handleInput}"
+          name="description"
+          label="Description"
+          outlined
+        >
+        </wl-textfield>
       </form>
     `;
   }
@@ -29,6 +40,7 @@ export class SupportingCastNpcForm extends LitElement {
     const npcUpdate = new CustomEvent('npc-update', {
       detail: {
         name: this.nameField!.value,
+        description: this.descriptionField!.value,
       },
     });
 
