@@ -36,8 +36,22 @@ describe('<supporting-cast-app>', async () => {
       app.form!.raceField!.value = 'NPC race';
       app.form!.raceField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('race')).to.equal(
-        'NPC race'
+      expect(app.npcView!.npcBlock!.getAttribute('race')).to.equal('NPC race');
+    });
+    it('update NPC block statblock from form.', async () => {
+      app.form!.statblockField!.value = 'goblin';
+      app.form!.statblockField!.dispatchEvent(new CustomEvent('input'));
+
+      expect(app.npcView!.npcBlock!.getAttribute('statblock')).to.equal(
+        'goblin'
+      );
+    });
+    it('update NPC block alignment from form.', async () => {
+      app.form!.alignmentField!.value = 'neutral useless';
+      app.form!.alignmentField!.dispatchEvent(new CustomEvent('input'));
+
+      expect(app.npcView!.npcBlock!.getAttribute('alignment')).to.equal(
+        'neutral useless'
       );
     });
   });

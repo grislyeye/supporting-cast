@@ -14,6 +14,10 @@ export class SupportingCastNpcForm extends LitElement {
 
   @query('#race-field') raceField!: Textfield | null;
 
+  @query('#statblock-field') statblockField!: Textfield | null;
+
+  @query('#alignment-field') alignmentField!: Textfield | null;
+
   render() {
     return html`
       <form id="npc-block-form">
@@ -55,6 +59,26 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </wl-textfield>
       </form>
+
+        <wl-textfield
+          id="statblock-field"
+          @input="${this._onInput}"
+          name="statblock"
+          label="Statblock"
+          outlined
+        >
+        </wl-textfield>
+      </form>
+
+        <wl-textfield
+          id="alignment-field"
+          @input="${this._onInput}"
+          name="alignment"
+          label="Alignment"
+          outlined
+        >
+        </wl-textfield>
+      </form>
     `;
   }
 
@@ -65,6 +89,8 @@ export class SupportingCastNpcForm extends LitElement {
         description: this.descriptionField!.value,
         gender: this.genderField!.value,
         race: this.raceField!.value,
+        statblock: this.statblockField!.value,
+        alignment: this.alignmentField!.value,
       },
     });
 
