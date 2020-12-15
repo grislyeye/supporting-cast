@@ -19,5 +19,6 @@ export class SupportingCastNpcView extends LitElement {
     this.npcBlock!.setAttribute('race', detail.race);
     this.npcBlock!.setAttribute('statblock', detail.statblock);
     this.npcBlock!.setAttribute('alignment', detail.alignment);
+    this.npcBlock!.setAttribute('attitude', detail.attitude);
   }
 }

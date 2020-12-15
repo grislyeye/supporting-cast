@@ -54,5 +54,13 @@ describe('<supporting-cast-app>', async () => {
         'neutral useless'
       );
     });
+    it('update NPC block attitude from form.', async () => {
+      app.form!.attitudeField!.value = 'indifferent';
+      app.form!.attitudeField!.dispatchEvent(new CustomEvent('input'));
+
+      expect(app.npcView!.npcBlock!.getAttribute('attitude')).to.equal(
+        'indifferent'
+      );
+    });
   });
 });
