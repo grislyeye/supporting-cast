@@ -24,6 +24,7 @@ describe('<supporting-cast-app>', async () => {
         'NPC description'
       );
     });
+
     it('update NPC block gender from form.', async () => {
       app.form!.genderField!.value = 'NPC gender';
       app.form!.genderField!.dispatchEvent(new CustomEvent('input'));
@@ -32,12 +33,14 @@ describe('<supporting-cast-app>', async () => {
         'NPC gender'
       );
     });
+
     it('update NPC block race from form.', async () => {
       app.form!.raceField!.value = 'NPC race';
       app.form!.raceField!.dispatchEvent(new CustomEvent('input'));
 
       expect(app.npcView!.npcBlock!.getAttribute('race')).to.equal('NPC race');
     });
+
     it('update NPC block statblock from form.', async () => {
       app.form!.statblockField!.value = 'goblin';
       app.form!.statblockField!.dispatchEvent(new CustomEvent('input'));
@@ -46,6 +49,7 @@ describe('<supporting-cast-app>', async () => {
         'goblin'
       );
     });
+
     it('update NPC block alignment from form.', async () => {
       app.form!.alignmentField!.value = 'neutral useless';
       app.form!.alignmentField!.dispatchEvent(new CustomEvent('input'));
@@ -54,6 +58,7 @@ describe('<supporting-cast-app>', async () => {
         'neutral useless'
       );
     });
+
     it('update NPC block attitude from form.', async () => {
       app.form!.attitudeField!.value = 'indifferent';
       app.form!.attitudeField!.dispatchEvent(new CustomEvent('input'));
@@ -61,6 +66,23 @@ describe('<supporting-cast-app>', async () => {
       expect(app.npcView!.npcBlock!.getAttribute('attitude')).to.equal(
         'indifferent'
       );
+    });
+
+    it('update NPC characteristic name from form.', async () => {
+      app.form!.characteristicNameField!.value = 'Angry (Neutral)';
+      app.form!.characteristicDescriptionField!.value = 'Why won\'t this fury stop?';
+      app.form!.characteristicNameField!.dispatchEvent(new CustomEvent('input'));
+
+      expect(app.npcView!.customSectionsContainer).dom.to.equal(`
+        <div id="custom-sections">
+          <vellum-stat
+            class="trait"
+            name="Angry (Neutral)."
+          >
+            Why won\'t this fury stop?
+          </vellum-stat>
+        </div>
+       `)
     });
   });
 });
