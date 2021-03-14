@@ -1,10 +1,16 @@
 import { LitElement, html, css, customElement, query } from 'lit-element';
 import { Textfield } from 'weightless/textfield';
 import 'weightless/textfield';
+import 'weightless/title';
+import 'weightless/divider';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
-  static styles = css``;
+  static styles = css`
+    wl-textfield {
+      padding-bottom: 1ex;
+    }
+  `;
 
   @query('#name-field') nameField!: Textfield | null;
 
@@ -20,10 +26,14 @@ export class SupportingCastNpcForm extends LitElement {
 
   @query('#attitude-field') attitudeField!: Textfield | null;
 
+  @query('#characteristic-name-field') characteristicNameField!: Textfield | null;
+
+  @query('#characteristic-description-field') characteristicDescriptionField!: Textfield | null;
+
   render() {
     return html`
       <form id="npc-block-form">
-        <h2>NPC</h2>
+        <wl-title level="2">NPC</wl-title>
 
         <wl-textfield
           id="name-field"
@@ -70,7 +80,6 @@ export class SupportingCastNpcForm extends LitElement {
           outlined
         >
         </wl-textfield>
-      </form>
 
         <wl-textfield
           id="alignment-field"
@@ -90,6 +99,29 @@ export class SupportingCastNpcForm extends LitElement {
           outlined
         >
         </wl-textfield>
+
+        <wl-divider></wl-divider>
+
+        <wl-title level="3">Characteristics</wl-title>
+
+        <wl-textfield
+          id="characteristic-name-field"
+          @input="${this._onInput}"
+          name="characteristic-name"
+          label="Name"
+          outlined
+        >
+        </wl-textfield>
+      </form>
+
+        <wl-textfield
+          id="characteristic-description-field"
+          @input="${this._onInput}"
+          name="characteristic-description"
+          label="Description"
+          outlined
+        >
+        </wl-textfield>
       </form>
     `;
   }
@@ -104,6 +136,12 @@ export class SupportingCastNpcForm extends LitElement {
         statblock: this.statblockField!.value,
         alignment: this.alignmentField!.value,
         attitude: this.attitudeField!.value,
+        characteristics: [
+          {
+            name: this.characteristicNameField!.value,
+            description: this.characteristicDescriptionField!.value
+          }
+        ]
       },
     });
 

@@ -17,7 +17,7 @@ import './supporting-cast-npc-view.js';
 
 @customElement('supporting-cast-app')
 export class SupportingCastApp extends LitElement {
-  @property({ type: String }) title = 'Supporting Cast';
+  @property({ type: String }) title: string = 'Supporting Cast';
 
   @query('#form') form!: SupportingCastNpcForm | null;
 
