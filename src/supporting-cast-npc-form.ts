@@ -1,6 +1,6 @@
 import { LitElement, html, css, customElement, query } from 'lit-element';
 import { Textfield } from 'weightless/textfield';
-import 'weightless/textfield';
+
 import 'weightless/title';
 import 'weightless/divider';
 
@@ -26,9 +26,11 @@ export class SupportingCastNpcForm extends LitElement {
 
   @query('#attitude-field') attitudeField!: Textfield | null;
 
-  @query('#characteristic-name-field') characteristicNameField!: Textfield | null;
+  @query('#characteristic-name-field')
+  characteristicNameField!: Textfield | null;
 
-  @query('#characteristic-description-field') characteristicDescriptionField!: Textfield | null;
+  @query('#characteristic-description-field')
+  characteristicDescriptionField!: Textfield | null;
 
   render() {
     return html`
@@ -70,7 +72,6 @@ export class SupportingCastNpcForm extends LitElement {
           outlined
         >
         </wl-textfield>
-      </form>
 
         <wl-textfield
           id="statblock-field"
@@ -89,7 +90,6 @@ export class SupportingCastNpcForm extends LitElement {
           outlined
         >
         </wl-textfield>
-      </form>
 
         <wl-textfield
           id="attitude-field"
@@ -112,7 +112,6 @@ export class SupportingCastNpcForm extends LitElement {
           outlined
         >
         </wl-textfield>
-      </form>
 
         <wl-textfield
           id="characteristic-description-field"
@@ -139,9 +138,9 @@ export class SupportingCastNpcForm extends LitElement {
         characteristics: [
           {
             name: this.characteristicNameField!.value,
-            description: this.characteristicDescriptionField!.value
-          }
-        ]
+            description: this.characteristicDescriptionField!.value,
+          },
+        ],
       },
     });
 
