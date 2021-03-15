@@ -6,8 +6,10 @@ import {
   property,
   query,
 } from 'lit-element';
-import 'weightless/divider';
-import 'weightless/nav';
+import '@kor-ui/kor/components/app-bar';
+import '@kor-ui/kor/components/card';
+import '@kor-ui/kor/components/grid';
+import '@kor-ui/kor/components/page';
 
 import { SupportingCastNpcForm } from './supporting-cast-npc-form.js';
 import './supporting-cast-npc-form.js';
@@ -17,7 +19,6 @@ import './supporting-cast-npc-view.js';
 
 @customElement('supporting-cast-app')
 export class SupportingCastApp extends LitElement {
-  @property({ type: String }) title: string = 'Supporting Cast';
 
   @query('#form') form!: SupportingCastNpcForm | null;
 
@@ -25,31 +26,18 @@ export class SupportingCastApp extends LitElement {
 
   static styles = css`
     :host {
-      color: #1a2b42;
-    }
-
-    #app {
-      display: flex;
-      flex-direction: column;
-
-      background: white;
-    }
-
-    #app #nav wl-nav {
-      --nav-bg: #24292e;
-      color: #ffffff;
-    }
-
-    #app #view {
-      display: flex;
-      padding: 5px;
-    }
-
-    #app #view > * {
-      margin: 5px;
+      display: block;
+      min-width: 100vw;
       min-height: 100vh;
     }
-  `;
+
+    nav {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+      background: #24292e;
+    }
+  `
 
   firstUpdated(): void {
     const handler = this.npcView!.handleEvents.bind(this.npcView);
@@ -58,21 +46,26 @@ export class SupportingCastApp extends LitElement {
 
   render() {
     return html`
-      <main id="app">
-        <div id="nav">
-          <wl-nav>
-            <h1 id="title" slot="title">${this.title}</h1>
-          </wl-nav>
-        </div>
+      <kor-page id="app" theme="light">
 
-        <div id="view">
-          <supporting-cast-npc-form id="form"> </supporting-cast-npc-form>
+        <nav slot="top">
+          <kor-app-bar label="Supporting Cast"></kor-app-bar>
+        </nav>
 
-          <wl-divider vertical></wl-divider>
+        <kor-grid id="view">
 
-          <supporting-cast-npc-view id="npc-view"> </supporting-cast-npc-view>
-        </div>
-      </main>
+          <kor-card label="NPC" grid-cols="6">
+            <supporting-cast-npc-form id="form"> </supporting-cast-npc-form>
+          </kor-card>
+
+          <kor-card label="Statblock" grid-cols="6">
+            <supporting-cast-npc-view id="npc-view"> </supporting-cast-npc-view>
+          </kor-card>
+
+        </kor-grid>
+
+      </kor-page>
     `;
   }
+
 }

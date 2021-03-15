@@ -7,7 +7,6 @@ type Stat = [Name, Description]
 
 @customElement('supporting-cast-npc-view')
 export class SupportingCastNpcView extends LitElement {
-  static styles = css``;
 
   @query('#npc-block') npcBlock!: LitElement | null;
 

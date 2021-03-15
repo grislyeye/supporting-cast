@@ -1,126 +1,111 @@
 import { LitElement, html, css, customElement, query } from 'lit-element';
-import { Textfield } from 'weightless/textfield';
 
-import 'weightless/title';
-import 'weightless/divider';
+import '@kor-ui/kor/components/divider';
+import '@kor-ui/kor/components/input';
+import { korInput } from '@kor-ui/kor/components/input';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
-  static styles = css`
-    wl-textfield {
-      padding-bottom: 1ex;
-    }
-  `;
 
-  @query('#name-field') nameField!: Textfield | null;
+  @query('#name-field') nameField!: korInput | null;
 
-  @query('#description-field') descriptionField!: Textfield | null;
+  @query('#description-field') descriptionField!: korInput | null;
 
-  @query('#gender-field') genderField!: Textfield | null;
+  @query('#gender-field') genderField!: korInput | null;
 
-  @query('#race-field') raceField!: Textfield | null;
+  @query('#race-field') raceField!: korInput | null;
 
-  @query('#statblock-field') statblockField!: Textfield | null;
+  @query('#statblock-field') statblockField!: korInput | null;
 
-  @query('#alignment-field') alignmentField!: Textfield | null;
+  @query('#alignment-field') alignmentField!: korInput | null;
 
-  @query('#attitude-field') attitudeField!: Textfield | null;
+  @query('#attitude-field') attitudeField!: korInput | null;
 
   @query('#characteristic-name-field')
-  characteristicNameField!: Textfield | null;
+  characteristicNameField!: korInput | null;
 
   @query('#characteristic-description-field')
-  characteristicDescriptionField!: Textfield | null;
+  characteristicDescriptionField!: korInput | null;
 
   render() {
     return html`
       <form id="npc-block-form">
-        <wl-title level="2">NPC</wl-title>
-
-        <wl-textfield
+        <kor-input
           id="name-field"
-          @input="${this._onInput}"
-          name="name"
           label="Name"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-textfield
+        <kor-input
           id="description-field"
-          @input="${this._onInput}"
-          name="description"
           label="Description"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-textfield
+        <kor-input
           id="gender-field"
-          @input="${this._onInput}"
-          name="gender"
           label="Gender"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-textfield
+        <kor-input
           id="race-field"
-          @input="${this._onInput}"
-          name="race"
           label="Race"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-textfield
+        <kor-input
           id="statblock-field"
-          @input="${this._onInput}"
-          name="statblock"
           label="Statblock"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-textfield
+        <kor-input
           id="alignment-field"
-          @input="${this._onInput}"
-          name="alignment"
           label="Alignment"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-textfield
+        <kor-input
           id="attitude-field"
-          @input="${this._onInput}"
-          name="attitude"
           label="Attitude"
-          outlined
+          type="text"
+          @input="${this._onInput}"
         >
-        </wl-textfield>
+        </kor-input>
 
-        <wl-divider></wl-divider>
+        <kor-divider spacing="m" orientation="horizontal"></kor-divider>
 
-        <wl-title level="3">Characteristics</wl-title>
+        <kor-text size="header-2">Characteristics</kor-text>
 
-        <wl-textfield
+        <kor-input
           id="characteristic-name-field"
-          @input="${this._onInput}"
-          name="characteristic-name"
           label="Name"
-          outlined
-        >
-        </wl-textfield>
-
-        <wl-textfield
-          id="characteristic-description-field"
+          type="text"
           @input="${this._onInput}"
-          name="characteristic-description"
-          label="Description"
-          outlined
         >
-        </wl-textfield>
+        </kor-input>
+
+        <kor-input
+          id="characteristic-description-field"
+          label="Description"
+          type="text"
+          @input="${this._onInput}"
+        >
+        </kor-input>
+
       </form>
     `;
   }
