@@ -1,4 +1,4 @@
-import { LitElement, html, css, customElement, query } from 'lit-element';
+import { LitElement, html, customElement, query } from 'lit-element';
 
 import '@kor-ui/kor/components/divider';
 import '@kor-ui/kor/components/input';
@@ -6,7 +6,6 @@ import { korInput } from '@kor-ui/kor/components/input';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
-
   @query('#name-field') nameField!: korInput | null;
 
   @query('#description-field') descriptionField!: korInput | null;
@@ -105,7 +104,6 @@ export class SupportingCastNpcForm extends LitElement {
           @input="${this._onInput}"
         >
         </kor-input>
-
       </form>
     `;
   }

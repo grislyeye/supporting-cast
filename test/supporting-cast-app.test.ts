@@ -70,8 +70,11 @@ describe('<supporting-cast-app>', async () => {
 
     it('update NPC characteristic name from form.', async () => {
       app.form!.characteristicNameField!.value = 'Angry (Neutral)';
-      app.form!.characteristicDescriptionField!.value = 'Why won\'t this fury stop?';
-      app.form!.characteristicNameField!.dispatchEvent(new CustomEvent('input'));
+      app.form!.characteristicDescriptionField!.value =
+        "Why won't this fury stop?";
+      app.form!.characteristicNameField!.dispatchEvent(
+        new CustomEvent('input')
+      );
 
       expect(app.npcView!.customSectionsContainer).dom.to.equal(`
         <div id="custom-sections">
@@ -79,10 +82,10 @@ describe('<supporting-cast-app>', async () => {
             class="trait"
             name="Angry (Neutral)."
           >
-            Why won\'t this fury stop?
+            Why won't this fury stop?
           </vellum-stat>
         </div>
-       `)
+       `);
     });
   });
 });
