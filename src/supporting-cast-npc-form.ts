@@ -24,7 +24,7 @@ export class SupportingCastNpcForm extends LitElement {
   characteristicNameField!: korInput | null;
 
   @query('#characteristic-description-field')
-  characteristicDescriptionField!: korTextarea | null;
+  characteristicDescriptionField!: korInput | null;
 
   render() {
     return html`
@@ -40,6 +40,7 @@ export class SupportingCastNpcForm extends LitElement {
         <kor-textarea
           id="description-field"
           label="Description"
+          rows="3"
           @input="${this._onInput}"
         >
         </kor-textarea>
@@ -94,12 +95,13 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </kor-input>
 
-        <kor-textarea
+        <kor-input
           id="characteristic-description-field"
           label="Description"
+          type="text"
           @input="${this._onInput}"
         >
-        </kor-textarea>
+        </kor-input>
       </form>
     `;
   }
