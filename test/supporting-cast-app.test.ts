@@ -13,14 +13,14 @@ describe('<supporting-cast-app>', async () => {
       app.form!.nameField!.value = 'NPC Name';
       app.form!.nameField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('name')).to.equal('NPC Name');
+      expect(app.npcView!.npcBlock!.name).to.equal('NPC Name');
     });
 
     it('update NPC block description from form.', async () => {
       app.form!.descriptionField!.value = 'NPC description';
       app.form!.descriptionField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('description')).to.equal(
+      expect(app.npcView!.npcBlock!.description).to.equal(
         'NPC description'
       );
     });
@@ -29,7 +29,7 @@ describe('<supporting-cast-app>', async () => {
       app.form!.genderField!.value = 'NPC gender';
       app.form!.genderField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('gender')).to.equal(
+      expect(app.npcView!.npcBlock!.gender).to.equal(
         'NPC gender'
       );
     });
@@ -38,14 +38,14 @@ describe('<supporting-cast-app>', async () => {
       app.form!.raceField!.value = 'NPC race';
       app.form!.raceField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('race')).to.equal('NPC race');
+      expect(app.npcView!.npcBlock!.race).to.equal('NPC race');
     });
 
     it('update NPC block statblock from form.', async () => {
       app.form!.statblockField!.value = 'goblin';
       app.form!.statblockField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('statblock')).to.equal(
+      expect(app.npcView!.npcBlock!.statblock).to.equal(
         'goblin'
       );
     });
@@ -54,7 +54,7 @@ describe('<supporting-cast-app>', async () => {
       app.form!.alignmentField!.value = 'neutral useless';
       app.form!.alignmentField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('alignment')).to.equal(
+      expect(app.npcView!.npcBlock!.alignment).to.equal(
         'neutral useless'
       );
     });
@@ -63,29 +63,23 @@ describe('<supporting-cast-app>', async () => {
       app.form!.attitudeField!.value = 'indifferent';
       app.form!.attitudeField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.getAttribute('attitude')).to.equal(
+      expect(app.npcView!.npcBlock!.attitude).to.equal(
         'indifferent'
       );
     });
 
     it('update NPC characteristic name from form.', async () => {
       app.form!.characteristicNameField!.value = 'Angry (Neutral)';
-      app.form!.characteristicDescriptionField!.value =
-        "Why won't this fury stop?";
       app.form!.characteristicNameField!.dispatchEvent(
         new CustomEvent('input')
       );
+      app.form!.characteristicDescriptionField!.value =
+        "Why won't this fury stop?";
+      app.form!.characteristicDescriptionField!.dispatchEvent(
+        new CustomEvent('input')
+      );
 
-      expect(app.npcView!.customSectionsContainer).dom.to.equal(`
-        <div id="custom-sections">
-          <vellum-stat
-            class="trait"
-            name="Angry (Neutral)."
-          >
-            Why won't this fury stop?
-          </vellum-stat>
-        </div>
-       `);
+      expect(app.npcView!.customSections).to.deep.equal([['Angry (Neutral)', "Why won't this fury stop?"]])
     });
   });
 });

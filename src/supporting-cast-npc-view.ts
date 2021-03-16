@@ -1,5 +1,6 @@
 import { LitElement, html, customElement, property, query } from 'lit-element';
-import 'vellum-monster/vellum-npc';
+import 'vellum-monster/dist/vellum-npc';
+import { NonPlayerCharacter } from 'vellum-monster/dist/vellum-npc';
 
 type Name = string;
 type Description = string;
@@ -7,7 +8,7 @@ type Stat = [Name, Description];
 
 @customElement('supporting-cast-npc-view')
 export class SupportingCastNpcView extends LitElement {
-  @query('#npc-block') npcBlock!: LitElement | null;
+  @query('#npc-block') npcBlock!: NonPlayerCharacter | null;
 
   @query('#custom-sections') customSectionsContainer!: HTMLElement | null;
 
@@ -25,7 +26,7 @@ export class SupportingCastNpcView extends LitElement {
 
   renderTrait(name: string, description: string) {
     return html`
-      <vellum-stat class="trait" name="${name}"> ${description} </vellum-stat>
+      <vellum-stat class="trait" name="${name}."> ${description} </vellum-stat>
     `;
   }
 
@@ -33,13 +34,13 @@ export class SupportingCastNpcView extends LitElement {
     const detail = (event as CustomEvent).detail;
 
     // TODO these should be members
-    this.npcBlock!.setAttribute('name', detail.name);
-    this.npcBlock!.setAttribute('description', detail.description);
-    this.npcBlock!.setAttribute('gender', detail.gender);
-    this.npcBlock!.setAttribute('race', detail.race);
-    this.npcBlock!.setAttribute('statblock', detail.statblock);
-    this.npcBlock!.setAttribute('alignment', detail.alignment);
-    this.npcBlock!.setAttribute('attitude', detail.attitude);
+    this.npcBlock!.name = detail.name;
+    this.npcBlock!.description = detail.description;
+    this.npcBlock!.gender = detail.gender;
+    this.npcBlock!.race = detail.race;
+    this.npcBlock!.statblock = detail.statblock;
+    this.npcBlock!.alignment = detail.alignment;
+    this.npcBlock!.attitude = detail.attitude;
 
     const characteristics: Array<Stat> = [
       [detail.characteristics[0].name, detail.characteristics[0].description],

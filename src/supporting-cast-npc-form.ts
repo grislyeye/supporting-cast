@@ -1,6 +1,4 @@
 import { LitElement, html, customElement, query } from 'lit-element';
-
-import '@kor-ui/kor/components/divider';
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input';
 
@@ -84,8 +82,6 @@ export class SupportingCastNpcForm extends LitElement {
           @input="${this._onInput}"
         >
         </kor-input>
-
-        <kor-divider spacing="m" orientation="horizontal"></kor-divider>
 
         <kor-text size="header-2">Characteristics</kor-text>
 
