@@ -1,12 +1,14 @@
 import { LitElement, html, customElement, query } from 'lit-element';
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input';
+import '@kor-ui/kor/components/textarea';
+import { korTextarea } from '@kor-ui/kor/components/textarea';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
   @query('#name-field') nameField!: korInput | null;
 
-  @query('#description-field') descriptionField!: korInput | null;
+  @query('#description-field') descriptionField!: korTextarea | null;
 
   @query('#gender-field') genderField!: korInput | null;
 
@@ -22,7 +24,7 @@ export class SupportingCastNpcForm extends LitElement {
   characteristicNameField!: korInput | null;
 
   @query('#characteristic-description-field')
-  characteristicDescriptionField!: korInput | null;
+  characteristicDescriptionField!: korTextarea | null;
 
   render() {
     return html`
@@ -35,13 +37,12 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </kor-input>
 
-        <kor-input
+        <kor-textarea
           id="description-field"
           label="Description"
-          type="text"
           @input="${this._onInput}"
         >
-        </kor-input>
+        </kor-textarea>
 
         <kor-input
           id="gender-field"
@@ -93,13 +94,12 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </kor-input>
 
-        <kor-input
+        <kor-textarea
           id="characteristic-description-field"
           label="Description"
-          type="text"
           @input="${this._onInput}"
         >
-        </kor-input>
+        </kor-textarea>
       </form>
     `;
   }
