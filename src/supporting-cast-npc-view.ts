@@ -8,6 +8,7 @@ type Stat = [Name, Description];
 
 @customElement('supporting-cast-npc-view')
 export class SupportingCastNpcView extends LitElement {
+
   @query('#npc-block') npcBlock!: NonPlayerCharacter | null;
 
   @query('#custom-sections') customSectionsContainer!: HTMLElement | null;
@@ -43,4 +44,5 @@ export class SupportingCastNpcView extends LitElement {
     this.npcBlock!.attitude = detail.attitude;
     this.customSections = detail.characteristics
   }
+
 }

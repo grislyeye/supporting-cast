@@ -1,4 +1,4 @@
-import { LitElement, html, customElement, property, query, queryAll } from 'lit-element';
+import { LitElement, html, css, customElement, property, query, queryAll } from 'lit-element';
 import '@kor-ui/kor/components/text';
 import '@kor-ui/kor/components/icon';
 
@@ -17,14 +17,20 @@ export class SupportingCastCharacteristicsInput extends LitElement {
 
   @queryAll(".description-field") descriptionFields!: korInput[]
 
-  get values(): [string, string][] | undefined {
+  get values(): [string, string][] {
     if (this.nameFields !== undefined && this.descriptionFields !== undefined) {
       const names: string[] = Array.from(this.nameFields).map(f => f.value)
       const descriptions: string[] = Array.from(this.descriptionFields).map(f => f.value)
 
       return names.map((n, i) => [n, descriptions[i]])
-    } else return undefined
+    } else return []
   }
+
+  static styles = css`
+    #expand {
+      font-size: 2em;
+    }
+  `;
 
   render() {
     return html`

@@ -11,6 +11,7 @@ import './supporting-cast-characteristics-input.js';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
+
   @query('#name-field') nameField!: korInput | null;
 
   @query('#description-field') descriptionField!: korTextarea | null;
@@ -112,4 +113,5 @@ export class SupportingCastNpcForm extends LitElement {
 
     this.dispatchEvent(npcUpdate);
   }
+
 }
