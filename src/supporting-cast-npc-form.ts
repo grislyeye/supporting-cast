@@ -1,8 +1,13 @@
 import { LitElement, html, customElement, query } from 'lit-element';
+
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input';
+
 import '@kor-ui/kor/components/textarea';
 import { korTextarea } from '@kor-ui/kor/components/textarea';
+
+import { SupportingCastCharacteristicsInput } from './supporting-cast-characteristics-input.js';
+import './supporting-cast-characteristics-input.js';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
@@ -20,11 +25,8 @@ export class SupportingCastNpcForm extends LitElement {
 
   @query('#attitude-field') attitudeField!: korInput | null;
 
-  @query('#characteristic-name-field')
-  characteristicNameField!: korInput | null;
-
-  @query('#characteristic-description-field')
-  characteristicDescriptionField!: korInput | null;
+  @query('#characteristic-fields')
+  characteristicFields!: SupportingCastCharacteristicsInput | null;
 
   render() {
     return html`
@@ -85,28 +87,16 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </kor-input>
 
-        <kor-text size="header-2">Characteristics</kor-text>
-
-        <kor-input
-          id="characteristic-name-field"
-          label="Name"
-          type="text"
-          @input="${this._onInput}"
+        <supporting-cast-characteristics-input @input="${this._onInput}"
+          id="characteristic-fields"
         >
-        </kor-input>
+        </supporting-cast-characteristics-input>
 
-        <kor-input
-          id="characteristic-description-field"
-          label="Description"
-          type="text"
-          @input="${this._onInput}"
-        >
-        </kor-input>
       </form>
     `;
   }
 
-  _onInput(): void {
+  private _onInput(): void {
     const npcUpdate = new CustomEvent('npc-update', {
       detail: {
         name: this.nameField!.value,
@@ -116,12 +106,7 @@ export class SupportingCastNpcForm extends LitElement {
         statblock: this.statblockField!.value,
         alignment: this.alignmentField!.value,
         attitude: this.attitudeField!.value,
-        characteristics: [
-          {
-            name: this.characteristicNameField!.value,
-            description: this.characteristicDescriptionField!.value,
-          },
-        ],
+        characteristics: this.characteristicFields!.values
       },
     });
 

@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
 
 import { SupportingCastApp } from '../src/supporting-cast-app.js';
 import '../src/supporting-cast-app.js';
@@ -68,18 +68,41 @@ describe('<supporting-cast-app>', async () => {
       );
     });
 
-    it('update NPC characteristic name from form.', async () => {
-      app.form!.characteristicNameField!.value = 'Angry (Neutral)';
-      app.form!.characteristicNameField!.dispatchEvent(
-        new CustomEvent('input')
-      );
-      app.form!.characteristicDescriptionField!.value =
+    it('update NPC characteristic from form.', async () => {
+      app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
+      app.form!.characteristicFields!.descriptionFields[0]!.value =
         "Why won't this fury stop?";
-      app.form!.characteristicDescriptionField!.dispatchEvent(
+      app.form!.characteristicFields!.dispatchEvent(
         new CustomEvent('input')
       );
 
       expect(app.npcView!.customSections).to.deep.equal([['Angry (Neutral)', "Why won't this fury stop?"]])
+    });
+
+    it('add NPC characteristic from form.', async () => {
+      app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
+      app.form!.characteristicFields!.descriptionFields[0]!.value =
+        "Why won't this fury stop?";
+      app.form!.characteristicFields!.dispatchEvent(
+        new CustomEvent('input')
+      );
+
+      app.form!.characteristicFields!.expand()
+      await(elementUpdated(app.form!.characteristicFields!))
+
+      app.form!.characteristicFields!.nameFields[1]!.value = 'Happy (Good)';
+      app.form!.characteristicFields!.descriptionFields[1]!.value =
+        "Big smiles everyone!";
+      app.form!.characteristicFields!.dispatchEvent(
+        new CustomEvent('input')
+      );
+
+      expect(app.npcView!.customSections).to.deep.equal(
+        [
+          ['Angry (Neutral)', "Why won't this fury stop?"],
+          ['Happy (Good)', "Big smiles everyone!"]
+        ]
+      )
     });
   });
 });

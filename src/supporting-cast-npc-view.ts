@@ -41,11 +41,6 @@ export class SupportingCastNpcView extends LitElement {
     this.npcBlock!.statblock = detail.statblock;
     this.npcBlock!.alignment = detail.alignment;
     this.npcBlock!.attitude = detail.attitude;
-
-    const characteristics: Array<Stat> = [
-      [detail.characteristics[0].name, detail.characteristics[0].description],
-    ];
-
-    this.customSections = characteristics;
+    this.customSections = detail.characteristics
   }
 }
