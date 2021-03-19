@@ -1,5 +1,5 @@
 import { LitElement, html, customElement, query } from 'lit-element';
-import { names } from "./dice"
+
 import "./dice/dice-random-input"
 import { DiceRandomInput } from "./dice/dice-random-input"
 
@@ -9,8 +9,8 @@ import { korInput } from '@kor-ui/kor/components/input/kor-input';
 import '@kor-ui/kor/components/textarea';
 import { korTextarea } from '@kor-ui/kor/components/textarea';
 
-import { CastStatsInput } from './cast-stats-input.js';
 import './cast-stats-input.js';
+import { CastStatsInput } from './cast-stats-input.js';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
@@ -39,7 +39,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="name-field"
           label="Name"
           type="text"
-          .table="${names}"
+          roller="https://intense-reef-78550.herokuapp.com/grislyeye/lofacharacters/rolls"
           @input="${this._onInput}"
         >
         </dice-random-input>

@@ -1,4 +1,5 @@
 import { LitElement, html, customElement, query, property } from 'lit-element';
+import { until } from 'lit-html/directives/until';
 
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input/kor-input';
@@ -8,7 +9,7 @@ export class DiceRandomInput extends LitElement {
 
   @property() label: string | undefined = undefined
 
-  @property({ type: Array }) table: string[] = []
+  @property() roller: string | undefined = undefined
 
   @query('#input') inputField!: korInput | null;
 
@@ -18,7 +19,7 @@ export class DiceRandomInput extends LitElement {
         id="input"
         label="${this.label}"
         type="text"
-        value="${this.value !== undefined ? this.value : this.roll}"
+        value="${until(this.roll())}"
       ></kor-input>
     `
   }
@@ -31,8 +32,21 @@ export class DiceRandomInput extends LitElement {
     this.inputField!.value = value
   }
 
-  get roll(): string {
-    return this.table[Math.floor(Math.random() * this.table.length)]
+  private async roll(): Promise<string> {
+    return fetch(this.roller!, { method: 'POST' })
+      .then(response => response.text())
+      .then(result => { console.log(result); return result; })
+      .then(body => this.parseMessage(body))
+  }
+
+  private parseMessage(html: string): string {
+    const message = document.createElement('div')!
+    message.innerHTML = html
+
+    return message
+      .querySelector('deckard-message')!
+      .querySelector('p')!
+      .textContent!
   }
 
 }
