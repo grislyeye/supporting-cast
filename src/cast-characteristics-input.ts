@@ -8,8 +8,8 @@ import { korInput } from '@kor-ui/kor/components/input';
 import '@kor-ui/kor/components/button';
 import { korButton } from '@kor-ui/kor/components/button';
 
-@customElement('supporting-cast-characteristics-input')
-export class SupportingCastCharacteristicsInput extends LitElement {
+@customElement('cast-characteristics-input')
+export class CastCharacteristicsInput extends LitElement {
 
   @property() rows: number = 1
 
