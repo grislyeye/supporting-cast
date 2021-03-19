@@ -1,7 +1,10 @@
 import { LitElement, html, customElement, query } from 'lit-element';
+import { names } from "./dice"
+import "./dice/dice-random-input"
+import { DiceRandomInput } from "./dice/dice-random-input"
 
 import '@kor-ui/kor/components/input';
-import { korInput } from '@kor-ui/kor/components/input';
+import { korInput } from '@kor-ui/kor/components/input/kor-input';
 
 import '@kor-ui/kor/components/textarea';
 import { korTextarea } from '@kor-ui/kor/components/textarea';
@@ -12,7 +15,7 @@ import './cast-stats-input.js';
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
 
-  @query('#name-field') nameField!: korInput | null;
+  @query('#name-field') nameField!: DiceRandomInput | null;
 
   @query('#description-field') descriptionField!: korTextarea | null;
 
@@ -32,13 +35,14 @@ export class SupportingCastNpcForm extends LitElement {
   render() {
     return html`
       <form id="npc-block-form">
-        <kor-input
+        <dice-random-input
           id="name-field"
           label="Name"
           type="text"
+          .table="${names}"
           @input="${this._onInput}"
         >
-        </kor-input>
+        </dice-random-input>
 
         <kor-textarea
           id="description-field"
@@ -97,6 +101,12 @@ export class SupportingCastNpcForm extends LitElement {
 
       </form>
     `;
+  }
+
+  async connectedCallback() {
+    super.connectedCallback()
+    await this.updateComplete
+    this._onInput()
   }
 
   private _onInput(): void {

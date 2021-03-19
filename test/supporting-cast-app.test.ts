@@ -4,12 +4,14 @@ import { SupportingCastApp } from '../src/supporting-cast-app.js';
 import '../src/supporting-cast-app.js';
 
 describe('<supporting-cast-app>', async () => {
-  const app: SupportingCastApp = await fixture(html`
+  const appFixture: () => Promise<SupportingCastApp> = async () => await fixture(html`
     <supporting-cast-app></supporting-cast-app>
   `);
 
   describe('should', () => {
     it('update NPC block name from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.nameField!.value = 'NPC Name';
       app.form!.nameField!.dispatchEvent(new CustomEvent('input'));
 
@@ -17,6 +19,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC block description from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.descriptionField!.value = 'NPC description';
       app.form!.descriptionField!.dispatchEvent(new CustomEvent('input'));
 
@@ -26,6 +30,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC block gender from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.genderField!.value = 'NPC gender';
       app.form!.genderField!.dispatchEvent(new CustomEvent('input'));
 
@@ -35,6 +41,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC block race from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.raceField!.value = 'NPC race';
       app.form!.raceField!.dispatchEvent(new CustomEvent('input'));
 
@@ -42,6 +50,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC block statblock from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.statblockField!.value = 'goblin';
       app.form!.statblockField!.dispatchEvent(new CustomEvent('input'));
 
@@ -51,6 +61,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC block alignment from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.alignmentField!.value = 'neutral useless';
       app.form!.alignmentField!.dispatchEvent(new CustomEvent('input'));
 
@@ -60,6 +72,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC block attitude from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.attitudeField!.value = 'indifferent';
       app.form!.attitudeField!.dispatchEvent(new CustomEvent('input'));
 
@@ -69,6 +83,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('update NPC characteristic from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
       app.form!.characteristicFields!.descriptionFields[0]!.value =
         "Why won't this fury stop?";
@@ -80,6 +96,8 @@ describe('<supporting-cast-app>', async () => {
     });
 
     it('add NPC characteristic from form.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
       app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
       app.form!.characteristicFields!.descriptionFields[0]!.value =
         "Why won't this fury stop?";
@@ -103,6 +121,12 @@ describe('<supporting-cast-app>', async () => {
           ['Happy (Good)', "Big smiles everyone!"]
         ]
       )
+    });
+
+    it('initialise NPC block name with random value.', async () => {
+      const app: SupportingCastApp = await appFixture()
+
+      expect(app.npcView!.npcBlock!.name).to.not.be.empty;
     });
   });
 });

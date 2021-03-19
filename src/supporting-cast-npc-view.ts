@@ -19,7 +19,9 @@ export class SupportingCastNpcView extends LitElement {
     return html` <vellum-npc id="npc-block">
       <div id="custom-sections">
         ${this.customSections.map(trait =>
-          this.renderTrait(trait[0], trait[1])
+          trait[0] !== undefined && trait[1] !== undefined ?
+          this.renderTrait(trait[0], trait[1]) :
+          html``
         )}
       </div>
     </vellum-npc>`;
