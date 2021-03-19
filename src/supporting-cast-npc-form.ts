@@ -6,8 +6,8 @@ import { korInput } from '@kor-ui/kor/components/input';
 import '@kor-ui/kor/components/textarea';
 import { korTextarea } from '@kor-ui/kor/components/textarea';
 
-import { CastCharacteristicsInput } from './cast-characteristics-input.js';
-import './cast-characteristics-input.js';
+import { CastStatsInput } from './cast-stats-input.js';
+import './cast-stats-input.js';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
@@ -27,7 +27,7 @@ export class SupportingCastNpcForm extends LitElement {
   @query('#attitude-field') attitudeField!: korInput | null;
 
   @query('#characteristic-fields')
-  characteristicFields!: CastCharacteristicsInput | null;
+  characteristicFields!: CastStatsInput | null;
 
   render() {
     return html`
@@ -88,10 +88,12 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </kor-input>
 
-        <cast-characteristics-input @input="${this._onInput}"
+        <cast-stats-input
           id="characteristic-fields"
+          label="Characteristics"
+          @input="${this._onInput}"
         >
-        </cast-characteristics-input>
+        </cast-stats-input>
 
       </form>
     `;

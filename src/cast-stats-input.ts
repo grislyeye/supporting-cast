@@ -8,8 +8,10 @@ import { korInput } from '@kor-ui/kor/components/input';
 import '@kor-ui/kor/components/button';
 import { korButton } from '@kor-ui/kor/components/button';
 
-@customElement('cast-characteristics-input')
-export class CastCharacteristicsInput extends LitElement {
+@customElement('cast-stats-input')
+export class CastStatsInput extends LitElement {
+
+  @property() label: string | undefined = undefined
 
   @property() rows: number = 1
 
@@ -35,7 +37,7 @@ export class CastCharacteristicsInput extends LitElement {
   render() {
     return html`
       <header>
-        <kor-text size="header-2">Characteristics</kor-text>
+        <kor-text size="header-2">${this.label}</kor-text>
 
         <kor-button
           id="expand"
