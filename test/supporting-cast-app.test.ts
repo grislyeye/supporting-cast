@@ -1,4 +1,4 @@
-import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
+import { html, fixture, expect, elementUpdated, aTimeout } from '@open-wc/testing';
 
 import { SupportingCastApp } from '../src/supporting-cast-app.js';
 import '../src/supporting-cast-app.js';
@@ -106,8 +106,12 @@ describe('<supporting-cast-app>', async () => {
       ]);
     });
 
+    // TODO test has external dependency
     it('initialise NPC block name with random value.', async () => {
       const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
 
       expect(app.npcView!.npcBlock!.name).to.not.be.empty;
     });
