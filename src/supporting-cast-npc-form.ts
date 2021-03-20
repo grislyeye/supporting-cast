@@ -1,7 +1,7 @@
 import { LitElement, html, customElement, query } from 'lit-element';
 
-import "./dice/dice-random-input"
-import { DiceRandomInput } from "./dice/dice-random-input"
+import './dice/dice-random-input.js';
+import { DiceRandomInput } from './dice/dice-random-input.js';
 
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input/kor-input';
@@ -14,7 +14,6 @@ import { CastStatsInput } from './cast-stats-input.js';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
-
   @query('#name-field') nameField!: DiceRandomInput | null;
 
   @query('#description-field') descriptionField!: korTextarea | null;
@@ -39,8 +38,8 @@ export class SupportingCastNpcForm extends LitElement {
           id="name-field"
           label="Name"
           type="text"
-          roller="https://intense-reef-78550.herokuapp.com/grislyeye/lofacharacters/rolls"
-          @input="${this._onInput}"
+          roller="https://fast-basin-60306.herokuapp.com/grislyeye/lofacharacters/name/rolls"
+          @input="${this.updateView}"
         >
         </dice-random-input>
 
@@ -48,7 +47,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="description-field"
           label="Description"
           rows="3"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </kor-textarea>
 
@@ -56,7 +55,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="gender-field"
           label="Gender"
           type="text"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </kor-input>
 
@@ -64,7 +63,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="race-field"
           label="Race"
           type="text"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </kor-input>
 
@@ -72,7 +71,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="statblock-field"
           label="Statblock"
           type="text"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </kor-input>
 
@@ -80,7 +79,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="alignment-field"
           label="Alignment"
           type="text"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </kor-input>
 
@@ -88,28 +87,21 @@ export class SupportingCastNpcForm extends LitElement {
           id="attitude-field"
           label="Attitude"
           type="text"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </kor-input>
 
         <cast-stats-input
           id="characteristic-fields"
           label="Characteristics"
-          @input="${this._onInput}"
+          @input="${this.updateView}"
         >
         </cast-stats-input>
-
       </form>
     `;
   }
 
-  async connectedCallback() {
-    super.connectedCallback()
-    await this.updateComplete
-    this._onInput()
-  }
-
-  private _onInput(): void {
+  private updateView(e: any): void {
     const npcUpdate = new CustomEvent('npc-update', {
       detail: {
         name: this.nameField!.value,
@@ -119,11 +111,10 @@ export class SupportingCastNpcForm extends LitElement {
         statblock: this.statblockField!.value,
         alignment: this.alignmentField!.value,
         attitude: this.attitudeField!.value,
-        characteristics: this.characteristicFields!.values
+        characteristics: this.characteristicFields!.values,
       },
     });
 
     this.dispatchEvent(npcUpdate);
   }
-
 }

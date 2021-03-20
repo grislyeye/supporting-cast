@@ -8,7 +8,6 @@ type Stat = [Name, Description];
 
 @customElement('supporting-cast-npc-view')
 export class SupportingCastNpcView extends LitElement {
-
   @query('#npc-block') npcBlock!: NonPlayerCharacter | null;
 
   @query('#custom-sections') customSectionsContainer!: HTMLElement | null;
@@ -19,9 +18,9 @@ export class SupportingCastNpcView extends LitElement {
     return html` <vellum-npc id="npc-block">
       <div id="custom-sections">
         ${this.customSections.map(trait =>
-          trait[0] !== undefined && trait[1] !== undefined ?
-          this.renderTrait(trait[0], trait[1]) :
-          html``
+          trait[0] !== undefined && trait[1] !== undefined
+            ? this.renderTrait(trait[0], trait[1])
+            : html``
         )}
       </div>
     </vellum-npc>`;
@@ -44,7 +43,6 @@ export class SupportingCastNpcView extends LitElement {
     this.npcBlock!.statblock = detail.statblock;
     this.npcBlock!.alignment = detail.alignment;
     this.npcBlock!.attitude = detail.attitude;
-    this.customSections = detail.characteristics
+    this.customSections = detail.characteristics;
   }
-
 }
