@@ -38,7 +38,7 @@ export class SupportingCastNpcForm extends LitElement {
           id="name-field"
           label="Name"
           type="text"
-          roller="https://fast-basin-60306.herokuapp.com/grislyeye/lofacharacters/name/rolls"
+          generatorId="lzoje20270"
           @input="${this.updateView}"
         >
         </dice-random-input>

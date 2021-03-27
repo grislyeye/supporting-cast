@@ -8,7 +8,7 @@ import { korInput } from '@kor-ui/kor/components/input/kor-input';
 export class DiceRandomInput extends LitElement {
   @property() label: string | undefined = undefined;
 
-  @property() roller: string | undefined = undefined;
+  @property() generatorId: string | undefined = undefined;
 
   @query('#input') inputField!: korInput | null;
 
@@ -40,16 +40,9 @@ export class DiceRandomInput extends LitElement {
   }
 
   private async roll(): Promise<string> {
-    return fetch(this.roller!, { method: 'POST' })
-      .then(response => response.text())
-      .then(body => this.parseMessage(body));
-  }
+    const uri: string = `https://six-perfect-glazer.glitch.me/api?generator=${this.generatorId}&list=output`
+    return fetch(uri, { method: 'GET' })
+      .then(response => response.text());
 
-  private parseMessage(html: string): string {
-    const message = document.createElement('div')!;
-    message.innerHTML = html;
-
-    return message.querySelector('deckard-message')!.querySelector('p')!
-      .textContent!;
   }
 }
