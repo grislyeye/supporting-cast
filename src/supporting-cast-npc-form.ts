@@ -6,8 +6,8 @@ import { DiceRandomInput } from './dice/dice-random-input.js';
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input/kor-input';
 
-import '@kor-ui/kor/components/textarea';
-import { korTextarea } from '@kor-ui/kor/components/textarea';
+import './dice/dice-random-textarea';
+import { DiceRandomTextarea } from './dice/dice-random-textarea';
 
 import './cast-stats-input.js';
 import { CastStatsInput } from './cast-stats-input.js';
@@ -16,9 +16,9 @@ import { CastStatsInput } from './cast-stats-input.js';
 export class SupportingCastNpcForm extends LitElement {
   @query('#name-field') nameField!: DiceRandomInput | null;
 
-  @query('#description-field') descriptionField!: korTextarea | null;
+  @query('#description-field') descriptionField!: DiceRandomTextarea | null;
 
-  @query('#gender-field') genderField!: korInput | null;
+  @query('#pronouns-field') pronounsField!: korInput | null;
 
   @query('#race-field') raceField!: korInput | null;
 
@@ -43,53 +43,59 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </dice-random-input>
 
-        <kor-textarea
+        <dice-random-textarea
           id="description-field"
           label="Description"
           rows="3"
+          generatorId="c116qpybdx"
           @input="${this.updateView}"
         >
-        </kor-textarea>
+        </dice-random-textarea>
 
-        <kor-input
-          id="gender-field"
-          label="Gender"
+        <dice-random-input
+          id="pronouns-field"
+          label="Pronouns"
           type="text"
+          generatorId="oghisbk72o"
           @input="${this.updateView}"
         >
-        </kor-input>
+        </dice-random-input>
 
-        <kor-input
+        <dice-random-input
           id="race-field"
           label="Race"
           type="text"
+          generatorId="57igfcmvsu"
           @input="${this.updateView}"
         >
-        </kor-input>
+        </dice-random-input>
 
-        <kor-input
+        <dice-random-input
           id="statblock-field"
           label="Statblock"
           type="text"
+          generatorId="8psinz72ej"
           @input="${this.updateView}"
         >
-        </kor-input>
+        </dice-random-input>
 
-        <kor-input
+        <dice-random-input
           id="alignment-field"
           label="Alignment"
           type="text"
+          generatorId="460txf1ubz"
           @input="${this.updateView}"
         >
-        </kor-input>
+        </dice-random-input>
 
-        <kor-input
+        <dice-random-input
           id="attitude-field"
           label="Attitude"
           type="text"
+          generatorId="fyr5cchgjd"
           @input="${this.updateView}"
         >
-        </kor-input>
+        </dice-random-input>
 
         <cast-stats-input
           id="characteristic-fields"
@@ -106,7 +112,7 @@ export class SupportingCastNpcForm extends LitElement {
       detail: {
         name: this.nameField!.value,
         description: this.descriptionField!.value,
-        gender: this.genderField!.value,
+        pronouns: this.pronounsField!.value,
         race: this.raceField!.value,
         statblock: this.statblockField!.value,
         alignment: this.alignmentField!.value,

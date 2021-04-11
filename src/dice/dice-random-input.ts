@@ -1,22 +1,15 @@
 import { LitElement, html, customElement, query, property } from 'lit-element';
+import { PerchanceElement } from './perchance-mixin.js';
 import { until } from 'lit-html/directives/until';
 
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input/kor-input';
 
 @customElement('dice-random-input')
-export class DiceRandomInput extends LitElement {
+export class DiceRandomInput extends PerchanceElement(LitElement) {
   @property() label: string | undefined = undefined;
 
-  @property() generatorId: string | undefined = undefined;
-
   @query('#input') inputField!: korInput | null;
-
-  render() {
-    return html`
-      <kor-input id="input" label="${this.label}" type="text"></kor-input>
-    `;
-  }
 
   get value(): string {
     return this.inputField ? this.inputField!.value : undefined;
@@ -26,23 +19,10 @@ export class DiceRandomInput extends LitElement {
     this.inputField!.value = value;
   }
 
-  async connectedCallback() {
-    super.connectedCallback();
-    await this.updateComplete;
-
-    this.inputField!.value = await this.roll();
-
-    const inputEvent = new CustomEvent('input', {
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(inputEvent);
+  render() {
+    return html`
+      <kor-input id="input" label="${this.label}" type="text"></kor-input>
+    `;
   }
 
-  private async roll(): Promise<string> {
-    const uri: string = `https://six-perfect-glazer.glitch.me/api?generator=${this.generatorId}&list=output`
-    return fetch(uri, { method: 'GET' })
-      .then(response => response.text());
-
-  }
 }

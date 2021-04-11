@@ -26,13 +26,13 @@ describe('<supporting-cast-app>', async () => {
       expect(app.npcView!.npcBlock!.description).to.equal('NPC description');
     });
 
-    it('update NPC block gender from form.', async () => {
+    it('update NPC block pronouns from form.', async () => {
       const app: SupportingCastApp = await appFixture();
 
-      app.form!.genderField!.value = 'NPC gender';
-      app.form!.genderField!.dispatchEvent(new CustomEvent('input'));
+      app.form!.pronounsField!.value = 'they/them';
+      app.form!.pronounsField!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.npcBlock!.gender).to.equal('NPC gender');
+      expect(app.npcView!.npcBlock!.pronouns).to.equal('they/them');
     });
 
     it('update NPC block race from form.', async () => {
@@ -115,6 +115,72 @@ describe('<supporting-cast-app>', async () => {
       await aTimeout(1000);
 
       expect(app.npcView!.npcBlock!.name).to.not.be.empty;
+    });
+
+    // Quarantined
+    // TODO test has external dependency
+    xit('initialise NPC description with random value.', async () => {
+      const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
+
+      expect(app.npcView!.npcBlock!.description).to.not.be.empty;
+    });
+
+    // Quarantined
+    // TODO test has external dependency
+    xit('initialise NPC race with random value.', async () => {
+      const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
+
+      expect(app.npcView!.npcBlock!.race).to.not.be.empty;
+    });
+
+    // Quarantined
+    // TODO test has external dependency
+    xit('initialise NPC statblock with random value.', async () => {
+      const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
+
+      expect(app.npcView!.npcBlock!.statblock).to.not.be.empty;
+    });
+
+    // Quarantined
+    // TODO test has external dependency
+    xit('initialise NPC alignment with random value.', async () => {
+      const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
+
+      expect(app.npcView!.npcBlock!.alignment).to.not.be.empty;
+    });
+
+    // Quarantined
+    // TODO test has external dependency
+    xit('initialise NPC attitude with random value.', async () => {
+      const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
+
+      expect(app.npcView!.npcBlock!.attitude).to.not.be.empty;
+    });
+
+    // Quarantined
+    // TODO test has external dependency
+    xit('initialise NPC pronouns with random value.', async () => {
+      const app: SupportingCastApp = await appFixture();
+
+      // TODO Get rid of timout
+      await aTimeout(1000);
+
+      expect(app.npcView!.npcBlock!.pronouns).to.not.be.empty;
     });
   });
 });

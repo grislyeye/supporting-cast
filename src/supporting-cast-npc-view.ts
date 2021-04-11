@@ -38,7 +38,7 @@ export class SupportingCastNpcView extends LitElement {
     // TODO these should be members
     this.npcBlock!.name = detail.name;
     this.npcBlock!.description = detail.description;
-    this.npcBlock!.gender = detail.gender;
+    this.npcBlock!.pronouns = detail.pronouns;
     this.npcBlock!.race = detail.race;
     this.npcBlock!.statblock = detail.statblock;
     this.npcBlock!.alignment = detail.alignment;
