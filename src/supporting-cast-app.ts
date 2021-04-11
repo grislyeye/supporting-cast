@@ -25,7 +25,6 @@ export class SupportingCastApp extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
       min-width: 100vw;
       min-height: 100vh;
     }
