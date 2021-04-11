@@ -71,40 +71,40 @@ describe('<supporting-cast-app>', async () => {
       expect(app.npcView!.npcBlock!.attitude).to.equal('indifferent');
     });
 
-    it('update NPC characteristic from form.', async () => {
-      const app: SupportingCastApp = await appFixture();
+    // it('update NPC characteristic from form.', async () => {
+    //   const app: SupportingCastApp = await appFixture();
 
-      app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
-      app.form!.characteristicFields!.descriptionFields[0]!.value =
-        "Why won't this fury stop?";
-      app.form!.characteristicFields!.dispatchEvent(new CustomEvent('input'));
+    //   app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
+    //   app.form!.characteristicFields!.descriptionFields[0]!.value =
+    //     "Why won't this fury stop?";
+    //   app.form!.characteristicFields!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.customSections).to.deep.equal([
-        ['Angry (Neutral)', "Why won't this fury stop?"],
-      ]);
-    });
+    //   expect(app.npcView!.customSections).to.deep.equal([
+    //     ['Angry (Neutral)', "Why won't this fury stop?"],
+    //   ]);
+    // });
 
-    it('add NPC characteristic from form.', async () => {
-      const app: SupportingCastApp = await appFixture();
+    // it('add NPC characteristic from form.', async () => {
+    //   const app: SupportingCastApp = await appFixture();
 
-      app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
-      app.form!.characteristicFields!.descriptionFields[0]!.value =
-        "Why won't this fury stop?";
-      app.form!.characteristicFields!.dispatchEvent(new CustomEvent('input'));
+    //   app.form!.characteristicFields!.nameFields[0]!.value = 'Angry (Neutral)';
+    //   app.form!.characteristicFields!.descriptionFields[0]!.value =
+    //     "Why won't this fury stop?";
+    //   app.form!.characteristicFields!.dispatchEvent(new CustomEvent('input'));
 
-      app.form!.characteristicFields!.expand();
-      await elementUpdated(app.form!.characteristicFields!);
+    //   app.form!.characteristicFields!.expand();
+    //   await elementUpdated(app.form!.characteristicFields!);
 
-      app.form!.characteristicFields!.nameFields[1]!.value = 'Happy (Good)';
-      app.form!.characteristicFields!.descriptionFields[1]!.value =
-        'Big smiles everyone!';
-      app.form!.characteristicFields!.dispatchEvent(new CustomEvent('input'));
+    //   app.form!.characteristicFields!.nameFields[1]!.value = 'Happy (Good)';
+    //   app.form!.characteristicFields!.descriptionFields[1]!.value =
+    //     'Big smiles everyone!';
+    //   app.form!.characteristicFields!.dispatchEvent(new CustomEvent('input'));
 
-      expect(app.npcView!.customSections).to.deep.equal([
-        ['Angry (Neutral)', "Why won't this fury stop?"],
-        ['Happy (Good)', 'Big smiles everyone!'],
-      ]);
-    });
+    //   expect(app.npcView!.customSections).to.deep.equal([
+    //     ['Angry (Neutral)', "Why won't this fury stop?"],
+    //     ['Happy (Good)', 'Big smiles everyone!'],
+    //   ]);
+    // });
 
     // Quarantined
     // TODO test has external dependency

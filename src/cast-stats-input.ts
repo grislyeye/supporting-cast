@@ -1,74 +1,35 @@
 import {
   LitElement,
   html,
-  css,
   customElement,
   property,
-  queryAll,
+  query
 } from 'lit-element';
-import '@kor-ui/kor/components/text';
-import '@kor-ui/kor/components/icon';
+import { InputElement } from './input-element.js'
 
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input';
 
-import '@kor-ui/kor/components/button';
-
 @customElement('cast-stats-input')
-export class CastStatsInput extends LitElement {
+export class CastStatsInput extends LitElement implements InputElement<[string, string]> {
+
   @property() label: string | undefined = undefined;
 
   @property() rows = 1;
 
-  @queryAll('.name-field') nameFields!: korInput[];
+  @query('#name-field') nameField!: korInput;
 
-  @queryAll('.description-field') descriptionFields!: korInput[];
+  @query('#description-field') descriptionField!: korInput;
 
-  get values(): [string, string][] {
-    if (this.nameFields !== undefined && this.descriptionFields !== undefined) {
-      const names: string[] = Array.from(this.nameFields).map(f => f.value);
-      const descriptions: string[] = Array.from(this.descriptionFields).map(
-        f => f.value
-      );
-
-      return names.map((n, i) => [n, descriptions[i]]);
-    } else return [];
-  }
-
-  static styles = css`
-    #expand {
-      font-size: 2em;
-    }
-  `;
+  @property() value: [string, string] = ['', '']
 
   render() {
     return html`
-      <header>
-        <kor-text size="header-2">${this.label}</kor-text>
+      <kor-input id="name-field" label="Name" type="text" value="${this.value[0]}"></kor-input>
 
-        <kor-button
-          id="expand"
-          label="Expand"
-          icon="library_add"
-          color="Primary"
-          @click="${this.expand}"
-        ></kor-button>
-      </header>
-
-      ${[...Array(this.rows).keys()].map(this.renderRow)}
-    `;
-  }
-
-  renderRow() {
-    return html`
-      <kor-input class="name-field" label="Name" type="text"> </kor-input>
-
-      <kor-input class="description-field" label="Description" type="text">
+      <kor-input id="description-field" label="Description" type="text" value="${this.value[1]}">
       </kor-input>
     `;
   }
 
-  expand(): void {
-    this.rows = this.rows + 1;
-  }
 }

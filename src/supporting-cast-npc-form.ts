@@ -1,4 +1,5 @@
 import { LitElement, html, customElement, query } from 'lit-element';
+import { roll } from './dice/perchance-mixin.js';
 
 import './dice/dice-random-input.js';
 import { DiceRandomInput } from './dice/dice-random-input.js';
@@ -11,6 +12,9 @@ import { DiceRandomTextarea } from './dice/dice-random-textarea.js';
 
 import './cast-stats-input.js';
 import { CastStatsInput } from './cast-stats-input.js';
+
+import './cast-extensible-input.js';
+import { CastExtensibleInput } from './cast-extensible-input.js';
 
 @customElement('supporting-cast-npc-form')
 export class SupportingCastNpcForm extends LitElement {
@@ -29,7 +33,7 @@ export class SupportingCastNpcForm extends LitElement {
   @query('#attitude-field') attitudeField!: korInput | null;
 
   @query('#characteristic-fields')
-  characteristicFields!: CastStatsInput | null;
+  characteristicFields!: CastExtensibleInput<[string, string], CastStatsInput> | null;
 
   render() {
     return html`
@@ -97,14 +101,20 @@ export class SupportingCastNpcForm extends LitElement {
         >
         </dice-random-input>
 
-        <cast-stats-input
+        <cast-extensible-input
           id="characteristic-fields"
           label="Characteristics"
           @input="${this.updateView}"
         >
-        </cast-stats-input>
+          <cast-stats-input>
+          </cast-stats-input>
+        </cast-extensible-input>
       </form>
     `;
+  }
+
+  firstUpdated() {
+    this!.characteristicFields!.value = [['blah', 'blah']]
   }
 
   private updateView(e: any): void {
@@ -117,7 +127,7 @@ export class SupportingCastNpcForm extends LitElement {
         statblock: this.statblockField!.value,
         alignment: this.alignmentField!.value,
         attitude: this.attitudeField!.value,
-        characteristics: this.characteristicFields!.values,
+        characteristics: this.characteristicFields!.value,
       },
     });
 

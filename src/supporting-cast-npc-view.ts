@@ -35,7 +35,6 @@ export class SupportingCastNpcView extends LitElement {
   handleEvents(event: Event): void {
     const detail = (event as CustomEvent).detail;
 
-    // TODO these should be members
     this.npcBlock!.name = detail.name;
     this.npcBlock!.description = detail.description;
     this.npcBlock!.pronouns = detail.pronouns;
