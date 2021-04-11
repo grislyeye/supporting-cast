@@ -6,8 +6,8 @@ import { DiceRandomInput } from './dice/dice-random-input.js';
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input/kor-input';
 
-import './dice/dice-random-textarea';
-import { DiceRandomTextarea } from './dice/dice-random-textarea';
+import './dice/dice-random-textarea.js';
+import { DiceRandomTextarea } from './dice/dice-random-textarea.js';
 
 import './cast-stats-input.js';
 import { CastStatsInput } from './cast-stats-input.js';
