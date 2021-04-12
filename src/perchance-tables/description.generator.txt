@@ -7,13 +7,13 @@ output
 quirk
   unusually tall
   unusually short
-  attractive
-  ugly
+  unusually attractive
+  unusually ugly
   covered in tattoos
   adorned in gold chains
-  filthy
+  covered in filth
   dressed colourfully
   dressed conservatively
   sweaty
   smelly
-  scarred
+  covered in scars
