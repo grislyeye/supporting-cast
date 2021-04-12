@@ -43,7 +43,7 @@ export class CastExtensibleInput<T, E extends InputElement<T>> extends LitElemen
   }
 
   expand(): void {
-    // this.rows = this.rows + 1;
+    this.value = this.value.concat([this!.template!.value]);
   }
 
 }
