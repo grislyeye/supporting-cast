@@ -113,8 +113,9 @@ export class SupportingCastNpcForm extends LitElement {
     `;
   }
 
-  firstUpdated() {
-    this!.characteristicFields!.value = [['blah', 'blah']]
+  async firstUpdated() {
+    const [name, description] = (await roll('9lwwglyh1o')).split(':')
+    this!.characteristicFields!.value = [[name + ' (Ideal)', description]]
   }
 
   private updateView(e: any): void {
