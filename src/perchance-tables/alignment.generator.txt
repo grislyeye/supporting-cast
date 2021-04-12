@@ -1,0 +1,15 @@
+title
+  Supporting Cast Alignment Generator
+
+output
+  [alignment1] [alignment2]
+
+alignment1
+  lawful
+  neutral
+  chaotic
+
+alignment2
+  good ^ 3
+  neutral ^ 3
+  evil

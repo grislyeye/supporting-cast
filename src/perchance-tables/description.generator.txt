@@ -1,0 +1,19 @@
+title
+  Supporting Cast Description Generator
+
+output
+  This person is [quirk], and [quirk].
+
+quirk
+  unusually tall
+  unusually short
+  attractive
+  ugly
+  covered in tattoos
+  adorned in gold chains
+  filthy
+  dressed colourfully
+  dressed conservatively
+  sweaty
+  smelly
+  scarred
