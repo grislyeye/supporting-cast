@@ -1,5 +1,6 @@
 import { LitElement, html, customElement, query } from 'lit-element';
 import { roll } from './dice/perchance-mixin.js';
+import { Stat } from './stat.js'
 
 import './dice/dice-random-input.js';
 import { DiceRandomInput } from './dice/dice-random-input.js';
@@ -114,9 +115,15 @@ export class SupportingCastNpcForm extends LitElement {
     `;
   }
 
+  async rollCharacteristic(generatorId: string) {
+     const [name, description] = (await roll('9lwwglyh1o')).split(':')
+     return new Stat(name, description)
+  }
+
   async firstUpdated() {
-    const [name, description] = (await roll('9lwwglyh1o')).split(':')
-    this!.characteristicFields!.value = [[name + ' (Ideal)', description]]
+    const ideal = await this.rollCharacteristic('9lwwglyh1o')
+
+    this!.characteristicFields!.value = [[ideal.name + ' (Ideal)', ideal.description]]
   }
 
   private updateView(e: any): void {
