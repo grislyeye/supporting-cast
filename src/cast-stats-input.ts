@@ -1,5 +1,4 @@
 import {
-  LitElement,
   html,
   customElement,
   property,
@@ -11,7 +10,7 @@ import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input';
 
 @customElement('cast-stats-input')
-export class CastStatsInput extends LitElement implements InputElement<[string, string]> {
+export class CastStatsInput extends InputElement<[string, string]> {
 
   @property() label: string | undefined = undefined;
 

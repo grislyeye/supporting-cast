@@ -5,7 +5,7 @@ import '@kor-ui/kor/components/text';
 import { InputElement } from './input-element.js'
 
 @customElement('cast-extensible-input')
-export class CastExtensibleInput<T, E extends InputElement<T>> extends LitElement implements InputElement<T[]> {
+export class CastExtensibleInput<T, E extends InputElement<T>> extends InputElement<T[]> {
 
   @property({ type: String }) label = '';
 
@@ -30,16 +30,10 @@ export class CastExtensibleInput<T, E extends InputElement<T>> extends LitElemen
 
       <div id="container">
         ${
-          this.value.map(v => this.newElement(v))
+          this.value.map(v => this!.template!.cloneWithValue(v))
         }
       </div>
     `;
-  }
-
-  private newElement(value: T): E {
-    const newElement = this!.template!.cloneNode(true) as E;
-    newElement.value = value;
-    return newElement;
   }
 
   expand(): void {

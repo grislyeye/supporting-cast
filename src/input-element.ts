@@ -1,7 +1,13 @@
 import { LitElement } from 'lit-element';
 
-export interface InputElement<T> extends LitElement {
+export abstract class InputElement<T> extends LitElement {
 
-  value: T
+  abstract value: T
+
+  cloneWithValue(value: T): InputElement<T> {
+    const newElement = this!.cloneNode(true) as InputElement<T>;
+    newElement.value = value;
+    return newElement;
+  }
 
 }
