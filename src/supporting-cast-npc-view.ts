@@ -24,15 +24,15 @@ export class SupportingCastNpcView extends LitElement {
 
   renderSections() {
     if(this.customSections) {
-      return this.customSections.map(trait =>
-        trait[0] !== undefined && trait[1] !== undefined
-          ? this.renderTrait(trait[0], trait[1])
+      return this.customSections.map(stat =>
+        stat[0] !== undefined && stat[1] !== undefined
+          ? this.renderStat(stat[0], stat[1])
           : html``
       )
     }
   }
 
-  renderTrait(name: string, description: string) {
+  renderStat(name: string, description: string) {
     return html`
       <vellum-stat class="trait" name="${name}."> ${description} </vellum-stat>
     `;
