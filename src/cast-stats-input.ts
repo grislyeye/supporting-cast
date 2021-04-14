@@ -4,13 +4,13 @@ import {
   property,
   query
 } from 'lit-element';
-import { InputElement } from './input-element.js'
+import { InputLitElement } from './input-lit-element.js'
 
 import '@kor-ui/kor/components/input';
 import { korInput } from '@kor-ui/kor/components/input';
 
 @customElement('cast-stats-input')
-export class CastStatsInput extends InputElement<[string, string]> {
+export class CastStatsInput extends InputLitElement<[string, string]> {
 
   @property() label: string | undefined = undefined;
 

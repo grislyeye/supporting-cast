@@ -19,9 +19,7 @@ export function PerchanceElement<T extends Constructor<LitElement>>(base: T) {
     abstract set value(value: string)
 
     async roll(): Promise<string> {
-      const uri = `https://six-perfect-glazer.glitch.me/api?generator=${this.generatorId}&list=output`
-      return fetch(uri, { method: 'GET' })
-        .then(response => response.text());
+      return roll(this.generatorId);
     }
 
     async connectedCallback() {

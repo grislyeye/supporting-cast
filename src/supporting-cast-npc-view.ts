@@ -12,18 +12,24 @@ export class SupportingCastNpcView extends LitElement {
 
   @query('#custom-sections') customSectionsContainer!: HTMLElement | null;
 
-  @property({ type: Array }) customSections: Array<Stat> = [];
+  @property({ type: Array }) customSections: Array<Stat> | undefined;
 
   render() {
     return html` <vellum-npc id="npc-block">
       <div id="custom-sections">
-        ${this.customSections.map(trait =>
-          trait[0] !== undefined && trait[1] !== undefined
-            ? this.renderTrait(trait[0], trait[1])
-            : html``
-        )}
+        ${this.renderSections()}
       </div>
     </vellum-npc>`;
+  }
+
+  renderSections() {
+    if(this.customSections) {
+      return this.customSections.map(trait =>
+        trait[0] !== undefined && trait[1] !== undefined
+          ? this.renderTrait(trait[0], trait[1])
+          : html``
+      )
+    }
   }
 
   renderTrait(name: string, description: string) {

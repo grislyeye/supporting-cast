@@ -104,6 +104,7 @@ export class SupportingCastNpcForm extends LitElement {
         <cast-extensible-input
           id="characteristic-fields"
           label="Characteristics"
+          rows="1"
           @input="${this.updateView}"
         >
           <cast-stats-input>
