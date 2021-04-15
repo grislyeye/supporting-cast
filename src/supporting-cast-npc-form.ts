@@ -123,7 +123,10 @@ export class SupportingCastNpcForm extends LitElement {
   async firstUpdated() {
     const ideal = await this.rollCharacteristic('9lwwglyh1o')
 
-    this!.characteristicFields!.value = [[ideal.name + ' (Ideal)', ideal.description]]
+    this!.characteristicFields!.value =
+      [
+        [ideal.name + ' (Ideal)', ideal.description]
+      ]
   }
 
   private updateView(e: any): void {
