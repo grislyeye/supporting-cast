@@ -5,19 +5,9 @@ output
   [bond]
 
 bond
-  Burglar:???.
-  Merchant:???.
-  Farmer:???.
-  Preacher:I must speak the words of my god to the faithless.
+  Preacher:I must preach to the faithless.
   Mountebank:I'm looking out for an easy mark.
   Ragamuffin:Just need a few coppers to make ends meet.
-  Minstrel:
-  Spy:
-  Guilder:
-  Noble:
-  Courtier:
-  Knight:
-  Wanderer:
-  Pilgrim:
-  Scholar:
-  Soldier:
+  Courtier:I serve my lord/lady, so long as it serves my purpose.
+  Knight:I'm sworn to a chivalrous oath.
+  Pilgrim:I've sworn an oath to travel to a holy shrine.

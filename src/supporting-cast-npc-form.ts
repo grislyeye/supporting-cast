@@ -116,20 +116,24 @@ export class SupportingCastNpcForm extends LitElement {
   }
 
   async rollCharacteristic(generatorId: string) {
-     const [name, description] = (await roll('9lwwglyh1o')).split(':')
+     const [name, description] = (await roll(generatorId)).split(':')
      return new Stat(name, description)
   }
 
   async firstUpdated() {
     const ideal = await this.rollCharacteristic('9lwwglyh1o')
+    const bond = await this.rollCharacteristic('hoann1u6sw')
 
     this!.characteristicFields!.value =
       [
-        [ideal.name + ' (Ideal)', ideal.description]
+        [ideal.name + ' (Ideal)', ideal.description],
+        [bond.name + ' (Bond)', bond.description]
       ]
+
+    this.updateView()
   }
 
-  private updateView(e: any): void {
+  private updateView(): void {
     const npcUpdate = new CustomEvent('npc-update', {
       detail: {
         name: this.nameField!.value,
