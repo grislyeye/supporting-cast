@@ -1,0 +1,13 @@
+title
+  Supporting Cast Personality Characteristic Generator
+
+output
+  [characteristic]
+
+characteristic
+  Monotonous:I am an awful bore, with a droning voice and dull personality.
+  Tick:I have a nervous tick where my eye twitches.
+  Whistler:I enjoy idly whistling to myself.
+  Blunt:I tell things as it is, not dancing around the issue.
+  Daydreamer:I'm frequently lost in my own wistful thoughts.
+  Optimistic:I have an unshakeable positive attitude.
