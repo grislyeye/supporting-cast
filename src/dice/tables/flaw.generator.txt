@@ -1,0 +1,12 @@
+title
+  Supporting Cast Flaw Generator
+
+output
+  [flaw]
+
+flaw
+  Gullible:I put too much trust in others.
+  Vain:I am obsessed with how I look and dress.
+  Kleptomaniac:I have an uncontrollable urge to steal.
+  Glutton:My greed for food has no limits.
+  Forgetful:I have a terrible memory for faces, names, and other things.
