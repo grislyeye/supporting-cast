@@ -1,6 +1,8 @@
 import { LitElement, html, customElement, property, query } from 'lit-element';
 import 'vellum-monster/dist/vellum-npc';
 import { NonPlayerCharacter } from 'vellum-monster/dist/vellum-npc';
+import '@kor-ui/kor/components/button';
+import html2canvas from 'html2canvas';
 
 type Name = string;
 type Description = string;
@@ -15,11 +17,20 @@ export class SupportingCastNpcView extends LitElement {
   @property({ type: Array }) customSections: Array<Stat> | undefined;
 
   render() {
-    return html` <vellum-npc id="npc-block">
-      <div id="custom-sections">
-        ${this.renderSections()}
-      </div>
-    </vellum-npc>`;
+    return html`
+      <vellum-npc id="npc-block">
+        <div id="custom-sections">
+          ${this.renderSections()}
+        </div>
+      </vellum-npc>
+
+      <kor-button
+        id="download"
+        label="Download"
+        color="Primary"
+        @click="${this.download}"
+      ></kor-button>
+    `;
   }
 
   renderSections() {
@@ -50,4 +61,28 @@ export class SupportingCastNpcView extends LitElement {
     this.npcBlock!.attitude = detail.attitude;
     this.customSections = detail.characteristics;
   }
+
+  download() {
+    html2canvas(this.npcBlock!).then(
+      (canvas) => {
+        const link = document.createElement('a')
+
+        if (typeof link.download === 'string') {
+          link.href = canvas.toDataURL()
+          link.download = 'npc-block.png';
+
+          //Firefox requires the link to be in the body
+          document.body.appendChild(link)
+
+          //simulate click
+          link.click()
+
+          //remove the link when done
+          document.body.removeChild(link)
+        }
+      }
+    )
+
+  }
+
 }
