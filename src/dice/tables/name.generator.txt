@@ -1,0 +1,105 @@
+title
+  Supporting Cast Name Generator
+
+output
+  [firstName] of [location]
+  [firstName] the {[adjective]|[profession]}
+  [adjective] [firstName]
+
+firstName
+  Anne
+  Beatrice
+  Belle
+  Bridget
+  Catherine
+  Edith
+  Esme
+  Helena
+  Isabella
+  Ivy
+  Jane
+  Joan
+  Lilly
+  Lucie
+  Mary
+  Merry
+  Rose
+  Tabatha
+  Tatiana
+  Arthur
+  Dick
+  Edward
+  Femi
+  Francis
+  Geoffrey
+  Giles
+  Gregor
+  Hugo
+  Ivor
+  Jack
+  Niels
+  Reyny
+  Rob
+  Roche
+  Taylor
+  Tom
+  Vincent
+  William
+
+location
+  Dismas
+  Capital
+  Haverstead
+  Kastenberg
+  Faro
+  Barnstable
+  the Keep
+
+adjective
+  Bloody
+  Elder
+  Younger
+  Young
+  Green
+  Grey
+  Red
+  Old
+  Golden
+  Silver
+  Veteran
+  Faithful
+  Good
+  Bad
+  Bastard
+  Known
+  Unknown
+  Noble
+  Infamous
+  Vile
+  Middle
+
+profession
+  Artisan
+  Crofter
+  Bard
+  Minstrel
+  Mummer
+  Tailor
+  Beggar
+  Knave
+  Blackguard
+  Fence
+  Scribe
+  Smith
+  Skinner
+  Tanner
+  Cobbler
+  Brewer
+  Wright
+  Mason
+  Weaver
+  Carver
+  Hermit
+  Sage
+  Sailor
+  Soldier

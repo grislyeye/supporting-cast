@@ -1,0 +1,12 @@
+title
+  Supporting Cast Pronouns Generator
+
+output
+  [pronouns]
+
+pronouns
+  he/him
+  she/her
+  they/them
+  he/they
+  she/they

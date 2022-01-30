@@ -1,0 +1,10 @@
+title
+  Supporting Cast Attitude Generator
+
+output
+  [attitude]
+
+attitude
+  friendly ^2
+  indifferent ^3
+  hostile

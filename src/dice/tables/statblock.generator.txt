@@ -1,0 +1,23 @@
+title
+  Supporting Cast Statblock Generator
+
+output
+  [statblock]
+
+statblock
+  acolyte
+  assassin
+  bandit
+  bandit captain
+  berserker
+  commoner ^10
+  cultist
+  cult fanatic
+  guard
+  knight
+  noble
+  priest
+  scout
+  spy
+  thug
+  veteran

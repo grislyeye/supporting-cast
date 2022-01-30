@@ -1,0 +1,13 @@
+title
+  Supporting Cast Bond Generator
+
+output
+  [bond]
+
+bond
+  Preacher:I must preach to the faithless.
+  Mountebank:I'm looking out for an easy mark.
+  Ragamuffin:Just need a few coppers to make ends meet.
+  Courtier:I serve my lord/lady, so long as it serves my purpose.
+  Knight:I'm sworn to a chivalrous oath.
+  Pilgrim:I've sworn an oath to travel to a holy shrine.

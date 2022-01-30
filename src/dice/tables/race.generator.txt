@@ -1,0 +1,11 @@
+title
+  Supporting Cast Race Generator
+
+output
+  [race]
+
+race
+  human ^3
+  elf
+  dwarf
+  halfling
